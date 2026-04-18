@@ -54,7 +54,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    if (nivelSonido < -50) {
+    if (nivelSonido < -40) {
       setProgresoPoema((prev) => Math.min(prev + 0.02, 1));
     } else {
       setProgresoPoema((prev) => Math.max(prev - 0.05, 0));
@@ -66,13 +66,11 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.titulo}>Busca un lugar silencioso</Text>
-      <View style={styles.contenedorPoema}>
-        {poema.slice(0, lineasVisibles).map((linea, index) => (
-          <Text key={index} style={styles.poema}>
-            {linea}
-          </Text>
-        ))}
-      </View>
+      {poema.slice(0, lineasVisibles).map((linea, index) => (
+        <Text key={index} style={styles.poema}>
+          {linea}
+        </Text>
+      ))}
     </View>
   );
 }
@@ -81,13 +79,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#020617",
-    justifyContent: "flex-start",
-    paddingTop: 120,
+    justifyContent: "center",
     alignItems: "center",
-    padding: 10,
-  },
-  contenedorPoema: {
-  marginTop: 50,
+    padding: 20,
   },
   titulo: {
     fontSize: 20,
